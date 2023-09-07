@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import Navbar from './components/Navbar'
+import Chapters from './pages/Chapters'
+import { Toaster } from 'react-hot-toast'
+import Chapter from './pages/Chapter'
+import Sloks from './pages/Sloks'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    <Navbar/>
+    <Toaster/>
+        <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/chapters' element={<Chapters/>} />
+        <Route path='/chapter/:id' element={<Chapter/>} />
+        <Route path='/sloks/:id/:verse' element={<Sloks/>} />
+        </Routes>
+    </>
+  )
 }
 
-export default App;
+export default App
